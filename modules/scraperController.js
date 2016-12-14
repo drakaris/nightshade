@@ -13,6 +13,7 @@ module.exports = setInterval(function() {
       scraper(targetUrl, function(err, url) {
         if (err) throw err;
         global.completed.push(url);
+        global.writerStack.push(url);
         process.stdout.write(`Finished [${global.completed.length}/${global.completed.length+global.urlStack.length}]\r`);
       });
     }

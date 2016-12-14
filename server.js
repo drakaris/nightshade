@@ -13,6 +13,7 @@ var config = JSON.parse(fs.readFileSync('config.json'));
 global.urlStack = [];
 global.throttle = 0;
 global.completed = [];
+global.writerStack = [];
 
 global.urlStack.push(config.target);
 
