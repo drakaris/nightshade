@@ -5,7 +5,7 @@ module.exports = setInterval(function() {
   if (global.throttle < config.concurrency) {
     let targetUrl = global.urlStack.shift();
     if (targetUrl === undefined) {
-      console.log('Undefined');
+      // console.log('Undefined');
     } else if (global.completed.indexOf(targetUrl) > -1) {
       console.log('Skipping: ' + targetUrl);
     } else {
@@ -13,11 +13,10 @@ module.exports = setInterval(function() {
       scraper(targetUrl, function(err, url) {
         if (err) throw err;
         global.completed.push(url);
-        console.log('URL count: ' + global.urlStack.length);
+        process.stdout.write(`Finished [${global.completed.length}/${global.completed.length+global.urlStack.length}]\r`);
       });
     }
   } else {
     // console.log('Throttle full');
-    console.log('Finished: ' + global.completed.length);
   }
-}, 300);
+}, 100);

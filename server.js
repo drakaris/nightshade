@@ -22,7 +22,7 @@ scraper(global.urlStack.shift(), function(err, url) {
   // URL complete, push to completed stack
   global.completed.push(url);
   // Start while loop controller
-  console.log('URL count: ' + global.urlStack.length);
+  // console.log('URL count: ' + global.urlStack.length);
   // Require auto controller
   var controller = require('./modules/controller');
 });
