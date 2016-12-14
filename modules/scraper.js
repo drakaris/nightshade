@@ -17,10 +17,10 @@ var scraper = function(target, callback) {
       let $ = cheerio.load(body);
       $('a').map(function(i, link) {
         let href = $(link).attr('href');
-        if (href.match(/http(s)?:\/\/(.)*(\.)?medium\.com/g) && global.completed.indexOf(href) == -1) {
+        if (href.match(/http(s)?:\/\/(.)*(\.)?medium\.com/g) && global.completed.indexOf(href) == -1 && global.urlStack.indexOf(href) == -1) {
           global.urlStack.push(href);
         } else {
-          console.log('[Rejected] ' + href);
+          // console.log('[Rejected] ' + href);
         }
       });
       // console.log('URL count: ' + global.urlStack.length);
@@ -29,7 +29,7 @@ var scraper = function(target, callback) {
     } else {
       // Reduce throttle count, request over.
       global.throttle--;
-      console.log('Throttle : ' + global.throttle);
+      // console.log('Throttle : ' + global.throttle);
       return callback(error);
     }
   });
