@@ -2,21 +2,17 @@
  * Mandatory requires *
  *********************/
 var fs = require('fs');
-var cheerio = require('cheerio');
 var scraper = require('./modules/scraper');
+var config = require('config.json');
 
-/**********************
- * Configuration File *
- *********************/
-var config = JSON.parse(fs.readFileSync('config.json'));
-
+/********************
+ * Global Variables *
+ *******************/
 global.urlStack = [];
 global.throttle = 0;
 global.completed = [];
 global.writerStack = [];
 global.completeCounter = 0;
-
-global.urlStack.push(config.target);
 
 // Check if url.csv exists
 if (fs.existsSync(config.csvFilename)) {
@@ -40,22 +36,19 @@ if (fs.existsSync(config.csvFilename)) {
       if (err) throw err;
       // URL complete, push to completed stack
       global.completed.push(url);
-      // Start while loop controller
-      // console.log('URL count: ' + global.urlStack.length);
-      // Require auto controller
+      // Require controllers
       var scraperController = require('./modules/scraperController');
       var writeController = require('./modules/writeController');
     });
   });
 } else {
   // Make initial scrape request
+  global.urlStack.push(config.target);
   scraper(global.urlStack.shift(), function(err, url) {
     if (err) throw err;
     // URL complete, push to completed stack
     global.completed.push(url);
-    // Start while loop controller
-    // console.log('URL count: ' + global.urlStack.length);
-    // Require auto controller
+    // Require controllers
     var scraperController = require('./modules/scraperController');
     var writeController = require('./modules/writeController');
   });

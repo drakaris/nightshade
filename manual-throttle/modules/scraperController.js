@@ -6,7 +6,7 @@ module.exports = setInterval(function() {
     if (global.throttle < config.concurrency) {
       let targetUrl = global.urlStack.shift();
       if (targetUrl === undefined) {
-        // console.log('Undefined');
+        // URL undefined
       } else if (global.completed.indexOf(targetUrl) > -1) {
         console.log('Skipping: ' + targetUrl);
       } else {
@@ -19,10 +19,11 @@ module.exports = setInterval(function() {
         });
       }
     } else {
-      // console.log('Throttle full');
+      // Max throttle
     }
   } else {
-    if (global.completeCounter > 5) {
+    // All URLs probably done
+    if (global.completeCounter > 10) {
       // Exit
       process.exit();
     } else {
