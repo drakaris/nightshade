@@ -22,4 +22,4 @@ var scraper = function(target, callback) {
   });
 }
 
-module.exports = scrapers;
+module.exports = scraper;
