@@ -24,5 +24,5 @@ scraper(global.urlStack.shift(), function(err, url) {
   // Start while loop controller
   // console.log('URL count: ' + global.urlStack.length);
   // Require auto controller
-  var controller = require('./modules/controller');
+  var controller = require('./modules/scraperController');
 });
