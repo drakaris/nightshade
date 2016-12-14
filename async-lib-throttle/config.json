@@ -1,0 +1,5 @@
+{
+  "target": "https://medium.com",
+  "concurrency": 5,
+  "csvFilename": "url.csv"
+}
