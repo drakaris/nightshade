@@ -14,6 +14,7 @@ global.urlStack = [];
 global.throttle = 0;
 global.completed = [];
 global.writerStack = [];
+global.completeCounter = 0;
 
 global.urlStack.push(config.target);
 
