@@ -1,0 +1,30 @@
+{
+  "name": "nightshade",
+  "version": "1.0.0",
+  "description": "Populates a CSV file with all URLs from a given target",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drakaris/nightshade.git"
+  },
+  "keywords": [
+    "medium",
+    "scraper",
+    "url",
+    "links",
+    "node.js"
+  ],
+  "author": "Arjhun Srinivas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drakaris/nightshade/issues"
+  },
+  "homepage": "https://github.com/drakaris/nightshade",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0"
+  }
+}
