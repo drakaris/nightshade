@@ -3,7 +3,7 @@
  *********************/
 var fs = require('fs');
 var scraper = require('./modules/scraper');
-var config = require('config.json');
+var config = require('./config.json');
 
 /********************
  * Global Variables *
