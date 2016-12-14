@@ -1,4 +1,4 @@
 {
   "target": "https://medium.com",
-  "concurrency": 1
+  "concurrency": 5
 }

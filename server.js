@@ -5,15 +5,24 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var scraper = require('./modules/scraper');
 
-/*********************
- * Configartion File *
- ********************/
+/**********************
+ * Configuration File *
+ *********************/
 var config = JSON.parse(fs.readFileSync('config.json'));
 
-scraper(config.target, function(err, links) {
+global.urlStack = [];
+global.throttle = 0;
+global.completed = [];
+
+global.urlStack.push(config.target);
+
+// Make initial scrape request
+scraper(global.urlStack.shift(), function(err, url) {
   if (err) throw err;
-  console.log(links.length);
-  // links.forEach(function(link, key) {
-  //   console.log(key + ' => ' + link);
-  // });
-})
+  // URL complete, push to completed stack
+  global.completed.push(url);
+  // Start while loop controller
+  console.log('URL count: ' + global.urlStack.length);
+  // Require auto controller
+  var controller = require('./modules/controller');
+});
