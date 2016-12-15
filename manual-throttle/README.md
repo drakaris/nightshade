@@ -1,7 +1,7 @@
 # nightshade
 Populates a CSV file with all URLs from a given target.
 
-## Installing Dependancies
+## Installing Dependencies
 Navigate into the `manual-throttle` folder and locate `package.json`.
 
 From terminal run: `npm install`
